@@ -1,0 +1,12 @@
+Aufgabe:
+    - Erstelle ein Programm, welches die LEDs des Raspberrys zum Leuchten bringt
+    - Sprachen hierbei:
+        - Java (mit pi4j Projekt, http://pi4j.com/ )
+        - C++ (wiringPi http://wiringpi.com/)
+        - C# (mit der Bibliothek von http://github.com/cypherkey/RaspberryPi.Net.git )
+        - Bash (einfach via echo)
+        - Python (mit gpio Bilbiothek)
+Erweiterungen:
+    - 1. Baue daraus eine Ampelschaltung, die die Ampelphasen durchlaeuft
+    - 2. Die Ampel soll auf Knopfdruck (Taster) geschaltet werden
+    - 3. Nach Knopfdruck sollen die Ausgangs-LEDs als Hinweis, dass gedrueckt wurde Blinken, bis die Grünphase einsetzt

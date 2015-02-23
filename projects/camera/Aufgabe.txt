@@ -1,0 +1,10 @@
+Aufgabe:
+    Erstelle ein Programm, welches Bilddaten von der Raspberry Pi Kamera holt und mittels OpenCV verarbeitbar macht (einfaches Beispiel liegt bereits vor)
+
+Erweiterung:
+    - Wie laeuft die Performance?
+    - Erkennungsmechanismen (z.B. Kanten, Gesichtserkennung, etc.) / Bildmanipulation/ im Bild
+    - Was kann man damit erkennen (z.B. Lampe an/aus)
+    
+Hilfe unter:
+    - http://docs.opencv.org/trunk/doc/py_tutorials/py_tutorials.html

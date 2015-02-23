@@ -1,0 +1,11 @@
+Entwickle mit der Hilfe des Framework Flask eine Web-Applikation um z.B. Sensoren darzustellen
+
+Erweiterungen:
+    - Sensoren aus einer Datenbank (z.B. SQLite lesen) - hier hilft sqlite und python Hilfe weiter
+    - Jeder Sensor soll eine eigene URL bekommen, z.B. http://localhost:5000/sensors/kitchen http://localhost/sensors/bathroom
+    - Aus der Applikation heraus sollen neue Werte (z.B. zufallszahlen) ermittelt werden und gespeichert werden
+    - Die Flask-Applikation soll via nginx aus dem Netzwerk erreichbar sein; Stichwort nginx, proxy 
+
+Startpunkte fuer Hilfe:
+    - Flask: http://flask.pocoo.org/
+    - Nginx: http://nginx.org/en/docs/beginners_guide.html#proxy

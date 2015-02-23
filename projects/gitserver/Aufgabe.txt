@@ -1,0 +1,22 @@
+Aufgabe: Erstelle einen Versionsmanagement-Server mit git
+
+Schritte:
+
+1. Installiere gitolite via Paketmanager
+2. Lege einen Funktionsuser namens 'git' an, der sich nicht einloggen kann, aber eine shell hat:
+    sudo adduser --system --group --shell /bin/bash --disabled-password git
+3a. ENTWEDER: Kopiere deinen oeffentlichen Schluessel nach /tmp
+3b. ODER: Generiere ein Schluesselpaar mit ssh-keygen und kopiere den oeffentlichen nach /tmp
+3c. ODER: Konvertiere deinen Puttygen generierten Schluessel: Exportieren nach OpenSSH und dann auf Linux Seite:
+    - ssh-keygen -e -f yourprivatekey > zwischenschritt.pub
+    - ssh-keygen -i -f zwischenschritt.pub > git.pub
+4. Wechsle in die Rolle des Funktionsusers git mit 'sudo su - git'
+5. Starte den setup mit 'gl-setup /tmp/DATEINAME.pub'
+6. Editor beenden
+7. Wechsle zu Benutzer zurueck
+8. Klone das Organisations-Repository mit 'git clone git@SERVERNAME:gitolite-admin"
+9. Benne deinen Schluessel in deinen Benutzernamen um
+10 Aendere in der Konfigurationsdatei den vorlaeufigen Schlusselnamen in deinem Benutzernamen
+10. Kopiere weitere Public-Keys (von anderen Teilnehmern) in das Verzeichnis (Dateiname: Benutzername)
+11. Lege in der Konfigurationsdatei 2 weitere Repositories mit passenden Rechten fuer Benutzer an
+12. Klone diese Repositories und arbeite gemeinsam daran

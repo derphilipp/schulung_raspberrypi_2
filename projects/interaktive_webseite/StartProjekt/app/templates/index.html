@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head lang="de">
+        <meta charset="UTF-8">
+        <title>{{ title }}</title>
+    </head>
+    <body>
+        Hallo {{ user["login"] }}
+        {% for sensor in sensors %}
+        <div><p> {{ sensor.name}} has Temperature: 
+            {{ sensor.data["measured"]}} and should be 
+            {{ sensor.data["set"]}}</p></div>
+        {% endfor %}
+    </body>
+</html>

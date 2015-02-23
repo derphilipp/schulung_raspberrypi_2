@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="keywords" content="raspberry,pi,linux,raspbian,Präsentation" />
+    <meta name="description" content="Raspberry Pi für Fortgeschrittene" />
+    <title>Rasberry Pi für Einsteiger</title>
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body {
+        font-family: 'Droid Serif';
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      table {     border-collapse: collapse; 
+          margin-top: 1em;
+      }
+      th {     padding: 5px;     border: 5px solid ; }
+      td {     padding: 5px;     border: 3px solid ; }
+      /*th, td {     padding: 5px;     border: 5px solid red; }*/
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- class: left, middle, inverse -->
+    <textarea id="source">
+name: inverse
+layout: true
+class: left, middle 
+---
+# Raspberry Pi für Fortgeschrittene
+
+Philipp Weißmann
+
+[mail@philipp-weissmann.de](mailto:mail@philipp-weissmann.de)
+---
+
+# Entwicklungsrechner oder Target?
+---
+# Arbeiten per Remote
+## Arbeiten auf Freigabe
+   - Arbeiten unter beliebigem System
+   - Dateien werden auf Freigabe abgelegt
+   - Kompilieren / Ausführen auf Raspi per Hand oder mittels IDE
+   - Komfortabel: Nur eine IDE / Betriebssystem
+---
+### Arbeiten direkt auf Konsole
+   - Aufschalten mittels beliebigem SSH-Werkzeug
+   - Dateien werden direkt auf Raspi bearbeitet
+   - Komfortabel: Alles auf Raspi direkt
+   - Kein Cross-Compile notwendig
+   - Extrem resourcensparend und schnell
+---
+### Arbeiten mittels Bild-Freigabe
+   - Vergleichsweise langsam
+   - Gute Verbindung notwendig
+   - Tipp: `tightvncserver` auf Raspberry Pi installieren
+---
+## Tipps
+   - Arbeiten per SSH
+   - Installation von `tmux`
+   - Installation des `mosh`
+---
+# Tmux
+---
+## `tmux`
+   - Ähnlich `screen` (veraltet)
+   - Ermöglicht Terminal Sessions
+   - Einfache Befehle und Shortcuts:
+   - Installation: `sudo apt-get install tmux`
+---
+## `tmux`
+### Befehle
+ Befehl      | Bedeutung            
+-------------|----------------------
+ `tmux`      | Startet neue Sitzung 
+ `tmux a`    | Verbindet zu Sitzung 
+ 
+### Shortcuts
+ Kürzel      | Bedeutung            
+ ------------|----------------------
+ Strg+b c    | Neuer "Tab"          
+ Strg+b n/p  | Nächster / Vorheriger "Tab"      
+ Strg+b 1..9 | "Tab" 1..9 öffnen   
+ Strg+b d    | Verbindung trennen   
+
+---
+# Tmux Cheatsheet: 
+##[http://www.cheatography.com/bechtold/cheat-sheets/tmux-the-terminal-multiplexer/](http://www.cheatography.com/bechtold/cheat-sheets/tmux-the-terminal-multiplexer/)
+
+---
+# Mosh
+   - Verbindet via SSH
+   - Nutzt zusätzlichen Rückkanal via UDP
+   - Verringert Latenz drastisch
+   - Kann Verbindung wiederaufbauen (z.B. bei Handy zu Raspi Verbindung)
+---
+# vim
+## Kurz und Knapp
+* Historisch wichtiger kompakter Editor, den jeder mal gesehen haben sollte
+* Installation: `sudo apt-get install vim`
+---
+## Konfiguration
+- Konfigurations-Datei `~/.vimrc`
+
+## Konfiguration Quickstart
+- Ausgefuchste Konfiguration von Github (`git` notwendig):
+    - `sudo apt-get install ctags`
+    - `git clone git://github.com/amix/vimrc.git ~/.vim_runtime`
+    - `sh ~./vim_runtime/install_basic_vimrc.sh`
+- Für Experten, bedarf jedoch mehr Prozessorpower und Einstellungen 
+    - `sh ~/.vim_runtime/install_awesome_vimrc.sh`
+---
+
+## Bedienung
+- 2 Modus: *insert-mode* und *normal-mode*
+
+---
+
+### Normal-Mode
+- Bewegen mittels Pfeiltasten oder
+- Bewegen per hjkl (Ja, *Gewöhnungssache*)
+- Kommandos, wie `50j` (50 Zeilen nach unten gehen) möglich
+- `:` für Befehle
+- `:w` speichere Datei
+- `:q` beendet Datei
+- `:wq!` Datei speichern, vim beenden, nicht nachfragen
+- `/` zum Suchen
+- `gg` Start der Datei
+- `G` Ende der Datei
+
+### Insert-Mode
+- Einsteigen per `i` (u.a.)
+- Beenden per *Strg+C* oder *Esc*
+- Schreiben 
+- Bewegen nur mittels Pfeiltasten 
+
+---
+
+## Tipps
+- Im *normal-mode* Code automatisch formatieren: `gg=G` eingeben
+- Das Programm `vimtutor` lehrt vim
+- vim lässt sich extrem an eigene Bedürfnisse anpassen
+- Es gibt für viele Programme vim Eingabeschemata und Plugins
+
+---
+
+# emacs
+Historisch wichtiger, "schwergewichtiger" Editor, interessant für LISP Entwickler, Org-Mode
+
+---
+
+### Kommandos
+- `Strg + x ...` Allgemeiner Befehl
+- `Strg + c ...` Modusspezifischer Befehl 
+- `Strg + x s` Speichern
+- `Strg + x c` Beenden
+
+### Org-Mode
+- Datei mit Endung *.org*
+- TODO-Listen, Präsentationen, etc. Extrem guter Export nach z.B. PDF, HTML, etc
+- `Strg + c e` Exportieren
+
+---
+
+# nano
+Minimalistischer Editor, Anfängerfreundlich, Nachbau von *pico*
+
+## Kommandos
+- `Strg + x` Beenden
+- `Strg + o` Speichern
+- `Strg + w` Suchen
+---
+# Shell-Scripting
+
+## Allgemeines
+- Kommandozeile deutlich Leistungsfähiger als unter DOS
+- Kommandozeilen-Programme sind die Regel statt die Ausnahme
+- Philosophie: Ein Programm hat einen Job, den macht es gut
+- Weiterhin: Programme miteinander Verbinden um Aufgabe zu erledigen
+
+## Bash
+- Bourne Again Shell
+- Häufigst genutzte Shell
+---
+## Umleitungen
+- Umleitung STDOUT: `program > datei` leitet die Ausgabe von *program* in die Datei *datei* um; Diese wird dabei überschrieben
+- Umleitung STDERR: `program 2> datei` leitet die Fehlerausgabe von *program* um
+- Umleitung append: `program >> datei` leitet die Ausgabe von *program* in die Datei *datei* um und wird an die Datei angehängt
+- Umleitung STDERR nach STDOUT: `program 2>&1` leitet die Fehlerausgabe in die Standardausgabe um
+- Wegwerfen von Ausgabe: `program >/dev/null` leitet die Ausgabe in "nichts" um
+- Umleitung von Datei aus: `program < datei` leitet *datei* als Eingabe für *program* um
+
+## Pipes
+- Pipen: `program1 | program2` leitet die Ausgabe von *program1* als Eingabe für *program2* um
+- Pipes und Umleitungen können miteinander kombiniert werden
+---
+## Beispiel Aufruf: Zählen
+
+### Hilfsprogramme
+- `ls`: Listet Verzeichnisse und Dateien auf
+- `grep`: Filtert Texte bzw Dateien nach Inhalten
+- `wc`: Zählt Buchstaben/Worte/Zeilen
+- `tee` "T-Stück" für Pipes (Leitet Daten in Datei "ab")
+
+### Aufruf
+- `ls -1 | grep gem | wc -l`
+- Liste Dateien/Verzeichnisse auf (einspaltig)...
+- ... durchsuche die Texte nach "gem" ...
+- ... und zähle die Anzahl der Zeilen des Ergebnisses
+
+### Erweiterung
+- `ls -1 | grep gem | tee ~/dateien.txt | wc -l`
+- Leitet zusätzlich die gefilterte Liste nach `~/dateien.txt` um
+
+---
+
+## Beispiel: Named Pipe
+- Anstatt Aufrufen können Pipes auch als "Dateien" angelegt werden
+
+### Hilfsprogramne
+- `mkfifo`: Legt eine named Pipe an
+- `&`: Das *&* am Ende eines Aufrufs legt den Programmablauf in den Hintergrund
+
+### Aufruf
+- `mkfifo my_pipe`
+- Legt einen *named pipe* mit dem Namen *my_pipe* an
+- `gzip -9 -c < my_pipe > out.gz &`
+- Der Inhalt von *my_pipe* wird mit *gzip* gepackt (`-9`: Maximale Kompression, `-c` Ausgabe nach *stdout*) und dessen Output wird nach *out.gz* umgeleitet
+- Ab dann können Daten nach *my_pipe* umgeleitet werden und werden verarbeitet
+- Pipes werden nach Benutzung immer geschlossen 
+---
+
+# Java
+
+### Hinweise
+- Java verbraucht *relativ* viel Arbeitsspeicher
+- IDE wie Eclipse auf Raspberry Pi nur sehr zäh nutzbar
+
+### Versionen
+- Verschiedene Implementation verfügbar
+- OpenJDK gut mit Paketmanager installierbar
+- Oracle Java für ARM inzwischen verfügbar, in teilen *drastisch* schneller
+- Download von Oracle Webseite
+
+## Installation
+- `sudo apt-get install openjdk-7-jdk`
+---
+## Quickstart
+- z.B. `vim HelloWorld.java`
+- Lauffähiges Programm schreiben
+
+```java
+// HelloWorld.java
+class HelloWorld{
+    public static void main(String args[]){
+        System.out.println("Hello World");
+    }
+}
+```
+- Kompilieren `javac HelloWorld.java`
+- Ausführen: `java HelloWorld`
+
+---
+
+# C++
+
+### Versionen
+- Empfehlung: Frischen C++ Compiler aus LLVM oder GCC nutzen
+- Mögliche IDE in grafischer Oberfläche: Geany
+
+### Installation
+- `sudo apt-get install g++-4.8`
+---
+## Quickstart
+### Minimal
+- z.B. `vim main.cpp`
+- Lauffähiges Programm schreiben
+
+```c++
+// main.cpp
+#include<iostream>
+
+int main(){
+    std::cout << "Hello World" << std::endl;
+    return(0);
+}
+```
+- Kompilieren: `g++-4.8 -Wall -std=c++11 main.cpp`
+- Ausführen: `./a.out` (Standard-Ausgabe Dateiname)
+
+---
+
+## Bonus: Vim-Konfiguration
+- Bei der oben genannten Konfiguration für vim nutzt den C++ Standard '99
+- Um mit der erweiterten Konfiguration von vim (d.h. *ctags* etc) C++11 zu nutzen (Fehlermeldungen u.a.) folgendes in die Datei *~/.vimrc* einfügen
+
+```bash
+let g:syntastic__cpp__compiler__options = '-std=c++11'
+```
+---
+
+# Makefile
+### Grundlagen
+- Um den Compile-Lauf immer wieder zu starten bietet es sich an ein Makefile zu schreiben
+- Minimales Makefile:
+
+```makefile
+build:
+    g++-4.8 -Wall -std=c++11 main.cpp -o main
+```
+- Aus vielen Editoren kann Make-Prozess gestartet werden
+- z.B. bei vim: `:make` ausführen
+
+---
+
+## C++11 (u.a.)
+- C++ bietet heute viele komfortable Features, wie z.B. 
+    - automatic type deduction
+    - for-each loops
+    - STL als Sprachstandard
+
+```c++
+// main.cpp
+#include <iostream>
+int main(){
+    auto elements = {4, 7, 11, 1983};
+    for(auto element: elements){
+        std::cout << element << std::endl;
+    }
+    return(0);
+}
+```
+---
+
+# C sharp
+- C#/.Net Applikationen ähnlich wie Java
+
+## Hinweise
+- Monodevelop (gleichnamiges Paket vorhanden) ist eine Opensource IDE für Mono
+- Grafische Oberflächen können mit z.B. GTK# entwickelt werden. WinForms und WPF sind nicht qülloffen.
+
+### Versionen
+- Mono ist eine Open-Source Implementierung von .Net
+- Ist binärkompatibel
+- Microsofts .Net Runtime kommt auf Linux & auf den Raspberry Pi
+
+## Installation
+- `sudo apt-get install install mono-complete`
+---
+## Quickstart
+- z.B. `vim HelloWorld.cs`
+- Lauffähiges Programm schreiben
+
+```csharp
+using System;
+
+public class HelloWorld {
+    public static void Main(string[] args) {
+        Console.WriteLine("Hello World!");
+    }
+}
+```
+
+- Kompilieren: `mcs HelloWorld.cs`
+- Ausführen:  `mono HelloWorld.exe`
+
+---
+# Python
+## Allgemeines
+- Python wird direkt interpretiert, kein Kompilieren notwendig
+- De facto Haus-und-Hof Sprache des Raspberry Pi
+- Tausende von praktischen Modulen (um z.B. Kamera oder GPIOs zu steuern)
+---
+## Quickstart:
+- z.B. `vim HelloWorld.py`
+- Lauffähiges Programm schreiben
+
+```python
+#!/usr/bin/env python
+
+print("Hello World")
+```
+
+- Ausführen: `python HelloWorld.py`
+- Oder ausführbar machen und ausführen: 
+    - `chmod u+x HelloWorld.py`
+    - `./HelloWorld.py`
+---
+    
+# Git und Co
+# Allgemein
+- Versionsmanagement-System
+- Dezentral
+- Polulär
+
+---
+
+## Konzept
+
+### Dezentral
+- Alle Daten (d.h. Versionen) werden lokal gehalten
+- Unterschiede können ausgetauscht werden
+- Übliches vorgehen: 
+  - Eine *bare* Version als "Zentrale"
+  - Normale Version auf den jeweilgen Entwicklungsrechnern
+
+---
+  
+## Start
+
+### Initialisierung auf Arbeitsplatz
+- In Arbeits-Verzeichnis:  `git init`
+
+### Initialisierung auf Server
+- Auf Server als Zentrale: `git init --bare`
+- Arbeitskopie erstellen: `git clone BENUTZERNAME@SERVERNAME:PFAD`
+- (Wenn das Repository lokal ist geht auch `git clone PFAD`)
+---
+
+## Workflow
+### Workflow
+- Ein Repository besteht aus 3 "Instanzen":
+  - *working dir*: Die Daten, die in deinem Arbeitsverzeichnis liegen
+  - *Index (stage)*: Die Daten, die für die nächste Änderungseinheit vorgemerkt sind
+  - *Head*: Die Daten, die hinter der Version liegen, auf der man arbeitet
+---
+## Add und Commit
+
+### Add
+- Eine Datei hinzufügen: `git add DATEINAME` 
+- Alle Dateien hinzufiegen: `git add --all`
+- Merkt die Datei und ihre Änderungen für den nächsten "Commit" vor
+
+### Commit
+- `git commit` 
+- Öffnet Editor zum Eingeben einer "Commit-Nachricht"
+- Wird keine Nachricht eingegeben, wird der commit abgebrochen
+- Ohne Editor: `git commit -m "NACHRICHT"`
+
+---
+## Commits hochladen
+### Commits hochladen
+- Wenn 1 .. n commits gemacht wurden, können diese hochgeladen werden
+- `git push origin master`
+- *origin* = Ursprung des Projekts
+- *master* = Branch des Projekts
+
+### Neues Ziel
+- Gibt es kein Ursprung, da ein lokales Projekt auf einen Server "umziehen soll"
+- `git remote add origin SERVERNAME`
+
+---
+
+## Commits holen
+
+### Pull
+- Änderungen vom Repository (z.B. gemeinsames Repository auf Server) abholen:
+- `git pull`
+
+### Merge
+- Für mehr als "Automerge": Siehe Online-Hilfe von Git
+
+---
+
+## Änderungen Rückgängig machen
+
+### Auf Dateiebene
+- `git checkout -- DATEINAME` stellt DATEINAME wieder her
+
+### Ganzes Projekt
+- `git reset --hard`
+---
+## Alte Stände
+
+### Ganzes Projekt 
+- `git log`  Historie anschauen
+- `git checkout HASHWERT` Projekt auf Stand HASHWERT zurücksetzen
+
+## Sonstiges
+### Sonstiges
+- `gitk` GUI, im Projektverzeichnis starten
+- Farbige Konsolenausgabe: `git config color.ui true`
+- Einzeilige Logausgabe: `git config format.pretty online`
+
+---
+# Projekte
+---
+
+# Kamera
+## Aufgabe:
+- Raspberry Pi Kamera ansprechen
+- Erkennen, ob man z.B. ein orangenes Blatt vor die Kamera hält oder nicht
+
+---
+
+# Git-Server (Versionsmanagement)
+## Server mit gitolite installieren
+
+---
+
+# GPIO ansprechen (Extra-Board)
+## Versuche eine Ampelschaltung zu implementieren in....
+- Python
+- C++
+- Java
+- C#
+- Bash
+
+---
+
+# PiFace nutzen
+## Versuche das PiFace (Addon-Board) anzusprechen
+- Implementiere einen Balken, der Systeminformation anzeigt (z.B. Systemlast o.ä.)
+- Alternativ: Interaktion mit den Buttons ermöglichen (z.B. Ampelschaltung, Geräusche erzeugen o.ä.)
+---
+
+# Rpi-Monitor
+## Installiere Rpi-Monitor, ein kleiner Webdienst, der den Raspberry-Zustand im Netzwerk anzeigt
+
+---
+
+# Rpi Display
+## Erstelle einen einfachen Radio-Player mit minimaler Steuerung
+- Soll auch auf kleinstem Display steuerbar sein
+---
+# Kontakt:
+- Philipp Weißmann
+- [mail@philipp-weissmann.de](mail@philipp-weissmann.de)
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>

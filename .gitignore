@@ -1,0 +1,16 @@
+*.vrb
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.org~
+*.out
+*.pdf
+*.snm
+*.tex
+*.toc
+*.exe
+*.class
+*.pyc
+*~

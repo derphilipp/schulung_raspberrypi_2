@@ -1,0 +1,17 @@
+Aufgabe: Erstelle dir einen kleinen Webradio-Player
+
+Sprache(n): Python, Bash
+Starten: Oberflaeche benutzten von:
+    https://github.com/splitbrain/pimenu.git
+Diese Oberflaeche nach belieben Anpassen
+
+Der Player soll Radio streamen, z.B. so:
+omxplayer http://stream.laut.fm/radioindie
+
+Ideen zur Erweiterung:
+    - Weitere Sender
+    - Timeout
+    - Stop Button
+    - Lauter/Leiser Button
+
+Experimentiere besonders mit Kommandozeilenprogrammen herum!

@@ -1,0 +1,6 @@
+Aufgabe: Installiere Rpi-Monitor, ein kleiner Webdienst fuer den Raspi-Zustand
+
+Schritte:
+
+- Folge der Anleitung auf https://github.com/XavierBerger/RPi-Monitor-deb
+- Empfehlung: Nutze einfach den Punkt "Repository" um die Installation durchzuführen; Damit bekommt man immer aktuelle Updates etc.
