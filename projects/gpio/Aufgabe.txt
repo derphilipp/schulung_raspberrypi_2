@@ -6,6 +6,7 @@ Aufgabe:
         - C# (mit der Bibliothek von http://github.com/cypherkey/RaspberryPi.Net.git )
         - Bash (einfach via echo)
         - Python (mit gpio Bilbiothek)
+        - Go (mit Bibliothek von https://github.com/stianeikeland/go-rpio )
 Erweiterungen:
     - 1. Baue daraus eine Ampelschaltung, die die Ampelphasen durchlaeuft
     - 2. Die Ampel soll auf Knopfdruck (Taster) geschaltet werden
